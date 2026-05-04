@@ -22,10 +22,23 @@ class Laporan extends Model
         'latitude',
         'longitude',
         'foto',
+        'admin_id',
+        'catatan_verifikasi',
+        'alasan_penolakan',
+        'waktu_verifikasi',
+    ];
+
+    protected $casts = [
+        'waktu_verifikasi' => 'datetime',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'admin_id');
     }
 }
