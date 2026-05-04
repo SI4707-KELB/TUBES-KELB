@@ -12,7 +12,7 @@ class DashboardController extends Controller
     /**
      * Get all data for the dashboard.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -64,24 +64,19 @@ class DashboardController extends Controller
             ->take(10)
             ->get();
 
-        return response()->json([
-            'status' => 'success',
-            'data' => [
-                'statistik' => [
-                    'total_hari_ini' => $totalLaporanHariIni,
-                    'menunggu_verifikasi' => $menungguVerifikasi,
-                    'sedang_diproses' => $sedangDiproses,
-                    'ditindaklanjuti' => $ditindaklanjuti,
-                    'selesai' => $selesai,
-                    'laporan_darurat' => $laporanDarurat,
-                ],
-                'peta_sebaran' => $petaSebaran,
-                'daftar_darurat' => $daftarDarurat,
-                'kategori_terbanyak' => $kategoriTerbanyak,
-                'kecamatan_terbanyak' => $kecamatanTerbanyak,
-                'tren_7_hari' => $tren7Hari,
-                'laporan_terbaru' => $laporanTerbaru,
-            ]
+        return view('dashboard', [
+            'totalLaporanHariIni' => $totalLaporanHariIni,
+            'menungguVerifikasi' => $menungguVerifikasi,
+            'sedangDiproses' => $sedangDiproses,
+            'ditindaklanjuti' => $ditindaklanjuti,
+            'selesai' => $selesai,
+            'laporanDarurat' => $laporanDarurat,
+            'petaSebaran' => $petaSebaran,
+            'daftarDarurat' => $daftarDarurat,
+            'kategoriTerbanyak' => $kategoriTerbanyak,
+            'kecamatanTerbanyak' => $kecamatanTerbanyak,
+            'tren7Hari' => $tren7Hari,
+            'laporanTerbaru' => $laporanTerbaru,
         ]);
     }
 }
