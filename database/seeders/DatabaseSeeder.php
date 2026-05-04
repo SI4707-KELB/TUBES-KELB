@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create an Admin user
         User::updateOrCreate(
             ['email' => 'admin@rodokan.com'],
             [
@@ -22,10 +21,5 @@ class DatabaseSeeder extends Seeder
                 'role' => 'admin',
             ]
         );
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
